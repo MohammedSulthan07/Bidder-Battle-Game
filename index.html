@@ -1,0 +1,140 @@
+<!doctype html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="theme-color" content="#0a111b" />
+  <meta name="description" content="Bidder Battle — a live multiplayer storage-auction card game." />
+  <title>Bidder Battle — Storage Auction Showdown</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800;900&family=DM+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="texture" aria-hidden="true"></div>
+  <header class="topbar">
+    <a class="brand" href="#home" aria-label="Bidder Battle home">
+      <span class="brand-mark">BB</span>
+      <span class="brand-copy"><strong>BIDDER<br />BATTLE</strong><small>STORAGE AUCTION SHOWDOWN</small></span>
+    </a>
+    <div class="topbar-right">
+      <span class="connection"><i id="connection-dot"></i><span id="connection-label">Connecting…</span></span>
+      <button class="btn btn-quiet btn-small theme-toggle" id="theme-toggle" data-action="toggle-theme" type="button" aria-label="Switch to light mode" title="Switch to light mode">☀ <span class="theme-toggle-label">Light mode</span></button>
+      <button class="btn btn-quiet btn-small" data-action="how">How to play</button>
+    </div>
+  </header>
+
+  <main id="app" class="app-shell">
+    <section class="hero-layout" id="home-screen">
+      <div class="hero-copy">
+        <p class="eyebrow"><span class="eyebrow-line"></span> THE STORAGE UNIT SHOWDOWN</p>
+        <h1>BET BIG.<br /><em>FIND</em> GOLD.</h1>
+        <p class="hero-lede">A mystery unit. A room full of rivals. One shot to turn forgotten junk into a legendary haul.</p>
+        <div class="hero-actions">
+          <button class="btn btn-primary btn-large" data-action="show-create">Create a room <span>↗</span></button>
+          <button class="btn btn-outline btn-large" data-action="show-join">Join a room</button>
+        </div>
+        <div class="hero-meta"><span>3–7 PLAYERS</span><b>•</b><span>2 AUCTION ROUNDS</span><b>•</b><span>VIRTUAL CASH ONLY</span></div>
+      </div>
+      <div class="hero-art-wrap">
+        <div class="hero-sun"></div>
+        <div class="hero-stamp">OPEN<br />THE<br />UNIT</div>
+        <svg class="hero-art" viewBox="0 0 620 490" role="img" aria-label="Illustration of an open storage locker filled with mystery boxes and treasure">
+          <defs>
+            <linearGradient id="locker" x1="0" x2="1" y1="0" y2="1"><stop stop-color="#d6e4d3"/><stop offset="1" stop-color="#7faeaa"/></linearGradient>
+            <linearGradient id="door" x1="0" x2="1"><stop stop-color="#19465a"/><stop offset="1" stop-color="#0c293b"/></linearGradient>
+            <linearGradient id="box" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#e7a85e"/><stop offset="1" stop-color="#a95d32"/></linearGradient>
+            <filter id="shadow" x="-30%" y="-30%" width="160%" height="180%"><feDropShadow dx="0" dy="12" stdDeviation="11" flood-color="#071a27" flood-opacity=".35"/></filter>
+          </defs>
+          <ellipse cx="313" cy="444" rx="255" ry="28" fill="#071a27" opacity=".18" />
+          <g filter="url(#shadow)">
+            <path d="M126 75 L453 75 L491 380 L88 380 Z" fill="url(#locker)" stroke="#0a2b3c" stroke-width="15" stroke-linejoin="round" />
+            <path d="M105 91 L292 91 L292 355 L92 355 Z" fill="url(#door)" stroke="#e9d9b3" stroke-width="7" />
+            <path d="M321 91 L473 91 L490 355 L321 355 Z" fill="#173e51" stroke="#e9d9b3" stroke-width="7" />
+            <path d="M123 120 H275 M113 152 H280 M106 184 H284 M98 216 H286 M96 248 H288 M94 280 H289 M92 312 H291" stroke="#376879" stroke-width="6" opacity=".7" />
+            <path d="M336 120 H461 M338 152 H463 M340 184 H465 M342 216 H467 M344 248 H469 M346 280 H471 M348 312 H473" stroke="#376879" stroke-width="6" opacity=".7" />
+            <rect x="294" y="91" width="27" height="264" rx="7" fill="#d8c59b" stroke="#0d293b" stroke-width="5" />
+            <rect x="280" y="173" width="18" height="53" rx="8" fill="#d69a37" stroke="#6f4728" stroke-width="4" />
+            <rect x="317" y="173" width="18" height="53" rx="8" fill="#d69a37" stroke="#6f4728" stroke-width="4" />
+          </g>
+          <g filter="url(#shadow)">
+            <path d="M170 268 L263 236 L327 270 L235 304 Z" fill="#f0c17d" stroke="#603b29" stroke-width="6" />
+            <path d="M170 268 L170 344 L235 384 L235 304 Z" fill="url(#box)" stroke="#603b29" stroke-width="6" />
+            <path d="M235 304 L327 270 L327 346 L235 384 Z" fill="#b76d3c" stroke="#603b29" stroke-width="6" />
+            <path d="M216 260 L243 295 L243 379" fill="none" stroke="#f5d69e" stroke-width="8" opacity=".8" />
+            <path d="M340 289 L418 267 L470 295 L389 321 Z" fill="#d7a269" stroke="#603b29" stroke-width="6" />
+            <path d="M340 289 L340 351 L389 381 L389 321 Z" fill="#b97845" stroke="#603b29" stroke-width="6" />
+            <path d="M389 321 L470 295 L470 356 L389 381 Z" fill="#96522f" stroke="#603b29" stroke-width="6" />
+            <path d="M378 285 L398 313 L398 374" stroke="#e9c08b" stroke-width="7" fill="none" />
+          </g>
+          <g transform="translate(400 40) rotate(13)" filter="url(#shadow)">
+            <path d="M0 15 Q45 -5 88 15 L80 73 Q44 92 8 72 Z" fill="#e5b347" stroke="#744722" stroke-width="6" />
+            <path d="M13 24 Q44 10 76 24" fill="none" stroke="#fff0b4" stroke-width="6" />
+            <text x="44" y="55" text-anchor="middle" font-family="DM Sans" font-weight="900" font-size="22" fill="#694326">$</text>
+          </g>
+          <g transform="translate(100 35) rotate(-13)" filter="url(#shadow)">
+            <path d="M0 24 L40 0 L80 24 L40 48 Z" fill="#e9bd80" stroke="#603b29" stroke-width="5" />
+            <path d="M0 24 V76 L40 101 V48 Z" fill="#bc7544" stroke="#603b29" stroke-width="5" />
+            <path d="M40 48 L80 24 V76 L40 101 Z" fill="#9d5b36" stroke="#603b29" stroke-width="5" />
+            <path d="M28 15 L48 37 L48 93" fill="none" stroke="#f7d79e" stroke-width="6" />
+          </g>
+          <g transform="translate(495 160) rotate(15)">
+            <path d="M0 14 L33 0 L65 14 L33 28 Z" fill="#e8c17b" stroke="#70462b" stroke-width="4" />
+            <path d="M0 14 V58 L33 76 V28 Z" fill="#c17a44" stroke="#70462b" stroke-width="4" />
+            <path d="M33 28 L65 14 V58 L33 76 Z" fill="#9e582f" stroke="#70462b" stroke-width="4" />
+          </g>
+          <g fill="#f8d267" stroke="#8b5b2d" stroke-width="3"><path d="M77 199 l8 -16 8 16 16 8 -16 8 -8 16 -8 -16 -16 -8z"/><path d="M524 85 l6 -12 6 12 12 6 -12 6 -6 12 -6 -12 -12 -6z"/><circle cx="508" cy="245" r="8"/><circle cx="130" cy="145" r="5"/></g>
+          <g transform="translate(260 390)"><rect x="-91" y="0" width="182" height="42" rx="10" fill="#f5d66c" stroke="#102c3c" stroke-width="5"/><text x="0" y="28" text-anchor="middle" font-family="Barlow Condensed" font-weight="900" font-size="23" letter-spacing="3" fill="#102c3c">WHAT'S IN THE UNIT?</text></g>
+        </svg>
+        <div class="art-caption"><span class="caption-dot"></span> YOUR NEXT BIG FIND IS HIDING IN HERE.</div>
+      </div>
+    </section>
+
+    <section class="entry-panel hidden" id="entry-panel">
+      <button class="back-link" data-action="back-home">← Back to home</button>
+      <div class="entry-card">
+        <p class="eyebrow" id="entry-eyebrow">START A SHOWDOWN</p>
+        <h2 id="entry-title">Create your room</h2>
+        <p class="muted" id="entry-description">Set up a room, invite your crew, and take the auctioneer seat.</p>
+        <form id="entry-form">
+          <label for="player-name">Your player name</label>
+          <input id="player-name" maxlength="18" required placeholder="e.g. TreasureHunter" autocomplete="nickname" />
+          <div id="join-code-wrap" class="hidden">
+            <label for="room-code">Room code</label>
+            <input id="room-code" maxlength="5" placeholder="ABCDE" autocapitalize="characters" />
+          </div>
+          <button class="btn btn-primary btn-block btn-large" id="entry-submit" type="submit">Create room <span>↗</span></button>
+          <p class="form-note">No account required. Choose a nickname and play with virtual cash.</p>
+        </form>
+      </div>
+    </section>
+
+    <section class="room-screen hidden" id="room-screen" aria-live="polite"></section>
+  </main>
+
+  <footer class="footer"><span>AN UNOFFICIAL FAN-MADE DIGITAL ADAPTATION</span><span>PLAY FAIR. BID BOLD. HAVE FUN.</span></footer>
+
+  <div class="modal-backdrop hidden" id="how-modal" role="dialog" aria-modal="true" aria-labelledby="how-title">
+    <div class="modal-card how-card">
+      <button class="modal-close" data-action="close-how" aria-label="Close">×</button>
+      <p class="eyebrow">THE QUICK START GUIDE</p>
+      <h2 id="how-title">HOW TO PLAY</h2>
+      <p class="modal-intro">Buy in, read the room, and don't pay treasure prices for a box of old socks.</p>
+      <div class="how-steps">
+        <article><span class="step-number">01</span><div><h3>OPEN THE UNIT</h3><p>The auctioneer reveals a storage-unit card. It tells everyone how many items are inside, whether one item is flipped face-up, and when players may peek.</p></div></article>
+        <article><span class="step-number">02</span><div><h3>BUY IN</h3><p>Starting with the player to the auctioneer's left, each player decides whether to pay <b>$100</b> to join that auction. The auctioneer collects each buy-in.</p></div></article>
+        <article><span class="step-number">03</span><div><h3>BID OR PASS</h3><p>Bids go up in <b>$100 steps</b>. The active player may raise the current bid or pass. The highest bidder wins the whole unit and its items.</p></div></article>
+        <article><span class="step-number">04</span><div><h3>REVEAL THE LOOT</h3><p>The winning bidder pays the auctioneer and adds the haul to their private stash. Item values count toward the final score; event cards apply their effect.</p></div></article>
+        <article><span class="step-number">05</span><div><h3>CROWN THE CHAMPION</h3><p>Every player takes the auctioneer role twice. At the end, the player with the most <b>cash + item value</b> wins.</p></div></article>
+      </div>
+      <div class="rule-note"><b>Starting setup:</b> 3–7 players · $5,000 virtual cash each · $100 buy-in · bids in $100 increments. If a winner cannot pay, they face a $1,000 in-game fine; if they cannot pay the fine, they are eliminated.</div>
+      <p class="form-note">This digital edition uses original sample items and event effects. Bids are cash-only here. All amounts are pretend game currency; no real money or prizes are involved.</p>
+      <button class="btn btn-primary btn-block" data-action="close-how">Got it — let's play</button>
+    </div>
+  </div>
+
+  <div class="toast" id="toast" role="status"></div>
+  <script type="module" src="app.js"></script>
+</body>
+</html>
